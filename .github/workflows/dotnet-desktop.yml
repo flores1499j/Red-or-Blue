@@ -35,3 +35,8 @@ jobs:
         name: WinForms-${{ matrix.configuration }}
         path: |
           **\bin\${{ matrix.configuration }}\**
+- name: Publish single-file EXE
+  run: dotnet publish -c Release -r win-x64 \
+    --self-contained true \
+    /p:PublishSingleFile=true \
+    /p:IncludeNativeLibrariesForSelfExtract=true
